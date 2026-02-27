@@ -8,7 +8,7 @@ Presentations and other useful stuff used during the workshop
 ## Part 2 Sign an image using Cosign
 Follow the guide at: https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/
 
-Bonus: implement an admission controller to make ure that only signed images are used :-) https://edu.chainguard.dev/open-source/sigstore/policy-controller/how-to-install-policy-controller/
+Bonus: implement an admission controller to make sure that only signed images are used :-) https://edu.chainguard.dev/open-source/sigstore/policy-controller/how-to-install-policy-controller/
 ## Part 3 Dig into how scanners works, and howto trick them, and detect a tampered image using signautures
 Read preso CNCF-Gbg Edgecases part 2
 
