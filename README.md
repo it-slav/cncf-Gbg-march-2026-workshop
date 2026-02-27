@@ -1,6 +1,6 @@
 # cncf-Gbg-march-2026-workshop braindump
 Presentations and other useful stuff used during the workshop
-## Part 1 Change from Go upstream image with jundreds of CVEs to a multi-stage build with zero CVEs
+## Part 1 Change from Go upstream 1.4Gb image with hundreds of CVEs to an Zero CVE 18Kb image using multi-stage build 
 1. Clone https://github.com/chainguard-dev/learning-labs-static/
 2. Read preso CNCF Gbg Feb 25 Build Secure and Minimal Images with Chainguard Static Images, part 1
 3. Follow my notes of steps in steps.txt (yes, just notes, not 100% well documented)
