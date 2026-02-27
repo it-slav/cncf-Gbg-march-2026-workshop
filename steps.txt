@@ -1,0 +1,87 @@
+Show app
+cat cmd/server/main.go
+cat internal/app/server.go
+
+docker build -t lab .
+docker run -d -p 8080:8080 lab
+curl localhost:8080
+
+docker images lab #notice size
+grype lab
+
+change FROM golang
+to cgr.dev/chainguard/go
+docker build -t lab-cgr .
+
+#Kill old container
+docker ps |grep lab
+docker rm -f 919 #or whatever
+
+docker run -d -p 8080:8080 lab-cgr
+curl localhost:8080
+
+docker images lab-cgr #A little smaller
+grype lab-cgr
+
+#Multistage build
+#Change the Docker file to
+FROM cgr.dev/chainguard/go AS build
+
+WORKDIR /work
+
+COPY go.mod /work/
+COPY cmd /work/cmd
+COPY internal /work/internal
+
+RUN CGO_ENABLED=0 go build -o hello ./cmd/server
+
+ENTRYPOINT ["/work/hello"]
+
+FROM cgr.dev/chainguard/static
+
+COPY --from=build /work/hello /hello
+
+ENTRYPOINT ["/hello"]
+
+# build and run
+docker build -t lab-cgr-multi .
+docker ps
+docker rm -f 243433
+docker run -d -p 8080:8080 lab-cgr-multi
+curl localhost:8080
+
+
+#debug distroless
+#will fail
+docker exec -it 4ecab8383d69 /bin/sh
+
+#change Dockerfile to
+FROM cgr.dev/chainguard/wolfi-base
+
+#kill running container
+docker ps
+docker rm -f xxxx
+
+#start
+docker run -d -p 8080:8080 --name debugtest lab-cgr-multi
+docker exec -it debugtest /bin/sh
+
+#change Dockerfile to
+FROM cgr.dev/chainguard/static
+
+docker rm -f debugtest
+docker build -t lab-cgr-multi .
+docker run -d -p 8080:8080 --name debugtest lab-cgr-multi
+
+#works for some strange reason
+docker debug debugtest
+
+cdebug exec --privileged -it debugtest
+
+#Things like this can be useful
+docker cp debugtest:/hello ./
+file hello
+
+#in k8s
+kubectl debug --image 
+
