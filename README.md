@@ -1,4 +1,4 @@
-# cncf-Gbg-march-2026-workshop
+# cncf-Gbg-march-2026-workshop braindump
 Presentations and other useful stuff used during the workshop
 ## Part 1 Change from Go upstream image with jundreds of CVEs to a multi-stage build with zero CVEs
 1. Clone https://github.com/chainguard-dev/learning-labs-static/
