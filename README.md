@@ -7,8 +7,11 @@ Presentations and other useful stuff used during the workshop
 4. If done correclty you should endup with a Dockerfile that looks like Dockerfile.multi-static
 ## Part 2
 Follow the guide at: https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/
+
 Bonus: implement an admission controller to make ure that only signed images are used :-) https://edu.chainguard.dev/open-source/sigstore/policy-controller/how-to-install-policy-controller/
 ## Part 3
 Read preso CNCF-Gbg Edgecases part 2
+
 Clone https://github.com/maligin/edgecase-2025
+
 Take a look at the scripts and understand what they do
